@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.northcoders.record_shop_frontend'
+    namespace 'com.northcoders.record_shop_android_frontend'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.northcoders.record_shop_frontend"
+        applicationId "com.northcoders.record_shop_android_frontend"
         minSdk 27
         targetSdk 34
         versionCode 1
