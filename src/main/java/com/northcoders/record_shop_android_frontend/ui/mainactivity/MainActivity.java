@@ -1,4 +1,4 @@
-package com.northcoders.record_shop_android_frontend;
+package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 
 import android.app.Application;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.model.AlbumRepository;
 
 public class MainActivity extends AppCompatActivity {
