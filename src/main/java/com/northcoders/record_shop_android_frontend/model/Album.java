@@ -1,7 +1,12 @@
 package com.northcoders.record_shop_android_frontend.model;
 
 
-public class Album {
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.northcoders.record_shop_android_frontend.BR;
+
+public class Album extends BaseObservable {
 
     long id;
     String name;
