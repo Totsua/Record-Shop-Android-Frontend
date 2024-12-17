@@ -28,59 +28,73 @@ public class Album extends BaseObservable {
         this.price = price;
     }
 
+    @Bindable
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+        notifyPropertyChanged(BR.id);
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+
     }
 
+    @Bindable
     public Artist getArtist() {
         return artist;
     }
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+        notifyPropertyChanged(BR.artist);
     }
 
+    @Bindable
     public String getGenre() {
         return genre;
     }
 
     public void setGenre(String genre) {
         this.genre = genre;
+        notifyPropertyChanged(BR.genre);
     }
 
+    @Bindable
     public String getReleaseDate() {
         return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+        notifyPropertyChanged(BR.releaseDate);
     }
 
+    @Bindable
     public int getStock() {
         return stock;
     }
 
     public void setStock(int stock) {
         this.stock = stock;
+        notifyPropertyChanged(BR.stock);
     }
 
+    @Bindable
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
+        notifyPropertyChanged(BR.price);
     }
 }
