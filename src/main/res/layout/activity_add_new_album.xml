@@ -7,6 +7,9 @@
         <variable
             name="album"
             type="com.northcoders.record_shop_android_frontend.model.Album" />
+        <variable
+            name="handler"
+            type="com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum.AddAlbumClickHandlers" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +88,8 @@
         app:layout_constraintTop_toBottomOf="@+id/stock" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/backButton"
+        android:onClick="@{handler::onGoBackButtonClick}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -97,7 +101,8 @@
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submit"
+        android:onClick="@{handler::onSubmitAlbumButtonClick}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit Album"
