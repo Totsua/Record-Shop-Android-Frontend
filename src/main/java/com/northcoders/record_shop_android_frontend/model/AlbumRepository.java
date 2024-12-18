@@ -2,6 +2,7 @@ package com.northcoders.record_shop_android_frontend.model;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -38,5 +39,28 @@ public class AlbumRepository {
             }
         });
         return mutableLiveData;
+    }
+
+    public void createAlbum(Album album){
+        AlbumApiService albumApiService = RetroFitInstance.getService();
+        Call<Album> albumCall = albumApiService.postAlbum(album);
+        albumCall.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(Call<Album> call, Response<Album> response) {
+                Toast.makeText(application.getApplicationContext(),
+                        "The album has been posted",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onFailure(Call<Album> call, Throwable t) {
+                Toast.makeText(application.getApplicationContext(),
+                                "The album cannot be posted",
+                                Toast.LENGTH_SHORT)
+                        .show();
+                Log.e("POST failed",t.getMessage());
+            }
+        });
     }
 }
