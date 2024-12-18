@@ -7,11 +7,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.northcoders.record_shop_android_frontend.R;
+import com.northcoders.record_shop_android_frontend.databinding.ActivityAddNewAlbumBinding;
+import com.northcoders.record_shop_android_frontend.databinding.ActivityMainBinding;
+import com.northcoders.record_shop_android_frontend.model.Album;
+import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
 
 public class AddNewAlbumActivity extends AppCompatActivity {
 
+
+    private ActivityAddNewAlbumBinding binding;
+    private AddAlbumClickHandlers handler;
+    private Album album;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +32,16 @@ public class AddNewAlbumActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_add_new_album);
+
+        MainActivityViewModel viewModel = new ViewModelProvider(this)
+                .get(MainActivityViewModel.class);
+
+        handler = new AddAlbumClickHandlers(album,this,viewModel);
+
+        binding.setAlbum(album);
+
+        binding.setHandler(handler);
     }
 }
