@@ -13,7 +13,7 @@ public interface AlbumApiService {
     @GET("albums")
     Call<List<Album>> getAllAlbums();
 
-    @POST
+    @POST("albums/create")
     Call<Album> postAlbum(@Body Album album);
 
 }
