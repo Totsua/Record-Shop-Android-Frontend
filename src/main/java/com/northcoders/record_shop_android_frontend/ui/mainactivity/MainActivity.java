@@ -1,9 +1,6 @@
 package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 
-import android.app.Application;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -40,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         });
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        binding.setHandler(new MainActivityClickHandler(this));
 
         getAllAlbums();
 

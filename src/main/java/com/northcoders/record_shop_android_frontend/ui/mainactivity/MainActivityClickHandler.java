@@ -8,7 +8,7 @@ import com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum.Add
 
 public class MainActivityClickHandler {
 
-    Context context;
+   private Context context;
 
     public MainActivityClickHandler(Context context) {
         this.context = context;
