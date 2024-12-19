@@ -1,5 +1,6 @@
 package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.databinding.ActivityMainBinding;
 import com.northcoders.record_shop_android_frontend.model.Album;
+import com.northcoders.record_shop_android_frontend.ui.updatealbum.UpdateAlbumActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel viewModel;
     private ActivityMainBinding binding;
+    private static final String ALBUM_KEY = "album";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
+        Intent intent = new Intent(this, UpdateAlbumActivity.class);
 
+        intent.putExtra(ALBUM_KEY,albums.get(position));
+
+        startActivity(intent);
     }
 }
