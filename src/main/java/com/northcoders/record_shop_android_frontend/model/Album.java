@@ -1,12 +1,16 @@
 package com.northcoders.record_shop_android_frontend.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.northcoders.record_shop_android_frontend.BR;
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
+
 
     long id;
     String name;
@@ -27,6 +31,30 @@ public class Album extends BaseObservable {
         this.stock = stock;
         this.price = price;
     }
+
+    protected Album(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        genre = in.readString();
+        releaseDate = in.readString();
+        stock = in.readInt();
+        price = in.readDouble();
+    }
+
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
+
+
 
     @Bindable
     public long getId() {
@@ -97,4 +125,22 @@ public class Album extends BaseObservable {
         this.price = price;
         notifyPropertyChanged(BR.price);
     }
+
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeString(genre);
+        dest.writeString(releaseDate);
+        dest.writeInt(stock);
+        dest.writeDouble(price);
+    }
+
 }
