@@ -2,6 +2,7 @@ package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,12 @@ import java.util.List;
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder> {
     List<Album> albumList;
     Context context;
+    RecyclerViewInterface recyclerInterface;
 
-    public AlbumAdapter(List<Album> albumList, Context context) {
+    public AlbumAdapter(List<Album> albumList, Context context, RecyclerViewInterface recyclerInterface;) {
         this.albumList = albumList;
         this.context = context;
+        this.recyclerInterface = recyclerInterface;
     }
 
     @NonNull
@@ -51,9 +54,24 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public static class AlbumViewHolder extends RecyclerView.ViewHolder{
         private AlbumItemLayoutBinding binding;
 
-        public AlbumViewHolder(AlbumItemLayoutBinding binding){
+        public AlbumViewHolder(AlbumItemLayoutBinding binding, RecyclerViewInterface recyclerInterface){
             super(binding.getRoot());
             this.binding = binding;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                // Now to get the position of the chosen album from the recycler
+                public void onClick(View v) {
+                    if(recyclerInterface != null){
+                        // Get position of the adapter
+                        int position = getAdapterPosition();
+                        // Set the position to the interface
+                        if(position != RecyclerView.NO_POSITION){
+                            recyclerInterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
         }
     }
