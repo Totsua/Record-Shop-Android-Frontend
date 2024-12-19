@@ -9,14 +9,14 @@
             type="com.northcoders.record_shop_android_frontend.model.Album" />
         <variable
             name="handler"
-            type="com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum.AddAlbumClickHandlers" />
+            type="com.northcoders.record_shop_android_frontend.ui.addalbum.AddAlbumClickHandlers" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mainactivity.addalbum.AddNewAlbumActivity">
+    tools:context=".ui.addalbum.AddNewAlbumActivity">
 
 
     <EditText
@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumName" />
 
+    <!--Genre should be a drop-down menu to prevent unnecessary errors-->
     <EditText
         android:id="@+id/genre"
         android:layout_width="wrap_content"

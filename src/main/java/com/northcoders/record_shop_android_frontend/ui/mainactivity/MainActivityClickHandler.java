@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum.AddNewAlbumActivity;
+import com.northcoders.record_shop_android_frontend.ui.addalbum.AddNewAlbumActivity;
 
 public class MainActivityClickHandler {
 

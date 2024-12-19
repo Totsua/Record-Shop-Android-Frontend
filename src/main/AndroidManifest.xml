@@ -19,7 +19,7 @@
             android:name=".UpdateAlbum"
             android:exported="false" />
         <activity
-            android:name=".ui.mainactivity.addalbum.AddNewAlbumActivity"
+            android:name=".ui.addalbum.AddNewAlbumActivity"
             android:exported="false" />
         <activity
             android:name=".ui.mainactivity.MainActivity"

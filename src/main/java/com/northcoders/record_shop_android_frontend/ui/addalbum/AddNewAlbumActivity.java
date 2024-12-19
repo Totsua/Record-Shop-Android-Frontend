@@ -1,4 +1,4 @@
-package com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum;
+package com.northcoders.record_shop_android_frontend.ui.addalbum;
 
 import android.os.Bundle;
 import android.widget.EditText;
