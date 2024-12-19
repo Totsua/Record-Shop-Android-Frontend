@@ -16,7 +16,7 @@
         android:theme="@style/Theme.RecordShopAndroidFrontend"
         tools:targetApi="31">
         <activity
-            android:name=".ui.updatealbum.UpdateAlbum"
+            android:name=".ui.updatealbum.UpdateAlbumActivity"
             android:exported="false" />
         <activity
             android:name=".ui.addalbum.AddNewAlbumActivity"

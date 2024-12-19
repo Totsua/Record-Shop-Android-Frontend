@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.northcoders.record_shop_android_frontend.R;
 
-public class UpdateAlbum extends AppCompatActivity {
+public class UpdateAlbumActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
