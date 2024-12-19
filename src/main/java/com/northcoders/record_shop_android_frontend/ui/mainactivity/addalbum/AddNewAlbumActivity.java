@@ -1,8 +1,7 @@
 package com.northcoders.record_shop_android_frontend.ui.mainactivity.addalbum;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -12,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.databinding.ActivityAddNewAlbumBinding;
-import com.northcoders.record_shop_android_frontend.databinding.ActivityMainBinding;
 import com.northcoders.record_shop_android_frontend.model.Album;
+import com.northcoders.record_shop_android_frontend.model.Artist;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
 
 public class AddNewAlbumActivity extends AppCompatActivity {
@@ -21,11 +20,12 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
     private ActivityAddNewAlbumBinding binding;
     private AddAlbumClickHandlers handler;
+    private MainActivityViewModel viewModel;
     private Album album;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+
         setContentView(R.layout.activity_add_new_album);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -33,9 +33,18 @@ public class AddNewAlbumActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_add_new_album);
+        // Get the artist name from the input
+        // and create an artist with that name
+        EditText editTextAlbumName = findViewById(R.id.artistName);
+        Artist thisArtist = new Artist();
+        thisArtist.setName(editTextAlbumName.getText().toString());
 
-        MainActivityViewModel viewModel = new ViewModelProvider(this)
+        album = new Album();
+        album.setArtist(thisArtist);
+        binding = DataBindingUtil.setContentView(this,
+                R.layout.activity_add_new_album);
+
+         viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
 
         handler = new AddAlbumClickHandlers(album,this,viewModel);
