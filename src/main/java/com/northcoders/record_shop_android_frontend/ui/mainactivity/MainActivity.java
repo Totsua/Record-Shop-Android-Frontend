@@ -18,7 +18,7 @@ import com.northcoders.record_shop_android_frontend.model.Album;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private RecyclerView recycler;
     private ArrayList<Album> albums;
@@ -63,4 +63,8 @@ public class MainActivity extends AppCompatActivity {
         albumAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onItemClick(int position) {
+
+    }
 }
