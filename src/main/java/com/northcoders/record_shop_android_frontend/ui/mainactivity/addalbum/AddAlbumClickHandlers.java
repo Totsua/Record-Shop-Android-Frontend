@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
-
 import com.northcoders.record_shop_android_frontend.model.Album;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivity;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
@@ -23,9 +22,10 @@ public class AddAlbumClickHandlers {
         this.viewModel = viewModel;
     }
 
+    // Check if the inputs are empty
     Predicate<Album> checkAlbumProperties = albumToCheck -> {
         if(albumToCheck.getName() == null ||
-                albumToCheck.getArtist().getName() == null ||
+                albumToCheck.getArtist().getName().isBlank() ||
                 albumToCheck.getArtist() == null ||
                 albumToCheck.getGenre() == null ||
         albumToCheck.getReleaseDate() == null ||
