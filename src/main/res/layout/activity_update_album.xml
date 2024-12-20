@@ -8,6 +8,9 @@
     <variable
         name="album"
         type="com.northcoders.record_shop_android_frontend.model.Album" />
+    <variable
+        name="handler"
+        type="com.northcoders.record_shop_android_frontend.ui.updatealbum.UpdateAlbumClickHandler" />
 </data>
 
 
@@ -91,7 +94,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backButton"
-        android:onClick=""
+        android:onClick="@{handler::onGoBackButtonClick}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="344dp"
@@ -104,7 +107,7 @@
 
     <Button
         android:id="@+id/update"
-        android:onClick=""
+        android:onClick="@{handler::onUpdateAlbumButtonClick}"
         android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -119,7 +122,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="52dp"
         android:backgroundTint="#BF0202"
-        android:onClick=""
+        android:onClick="@{handler::onDeleteButtonClick}"
         android:text="Delete Album"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
