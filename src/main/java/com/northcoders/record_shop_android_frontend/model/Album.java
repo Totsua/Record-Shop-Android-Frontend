@@ -54,6 +54,18 @@ public class Album extends BaseObservable implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", artist=" + artist +
+                ", genre='" + genre + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", stock=" + stock +
+                ", price=" + price +
+                '}';
+    }
 
 
     @Bindable
