@@ -111,8 +111,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         // Check log to see if album correctly appears
         Log.i("Main Activity Choose Album",chosenAlbum.toString());
 
-        // pass the chosen album to the next activity
-        intent.putExtra(ALBUM_KEY,chosenAlbum);
+        if(filteredAlbumsList == null || filteredAlbumsList.isEmpty()){
+            // pass the chosen album to the next activity
+            intent.putExtra(ALBUM_KEY,chosenAlbum);
+        }else{
+            intent.putExtra(ALBUM_KEY,filteredAlbumsList.get(position));
+        }
+
 
         startActivity(intent);
     }
