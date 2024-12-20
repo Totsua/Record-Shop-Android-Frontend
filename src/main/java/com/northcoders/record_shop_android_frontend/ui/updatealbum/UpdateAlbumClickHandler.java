@@ -78,7 +78,7 @@ public class UpdateAlbumClickHandler {
         }
 
 
-        viewModel.updateAlbum(updatedAlbum.getId(),updatedAlbum);
+        viewModel.updateAlbum(updatedAlbum);
         Intent intent = new Intent(context, MainActivity.class);
 
         context.startActivity(intent);
