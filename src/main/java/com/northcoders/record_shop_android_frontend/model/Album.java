@@ -35,12 +35,28 @@ public class Album extends BaseObservable implements Parcelable {
     protected Album(Parcel in) {
         id = in.readLong();
         name = in.readString();
+        artist = in.readParcelable(Artist.class.getClassLoader(), Artist.class);
         genre = in.readString();
         releaseDate = in.readString();
         stock = in.readInt();
         price = in.readDouble();
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeParcelable(artist, flags);
+        dest.writeString(genre);
+        dest.writeString(releaseDate);
+        dest.writeInt(stock);
+        dest.writeDouble(price);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     public static final Creator<Album> CREATOR = new Creator<Album>() {
         @Override
@@ -138,21 +154,5 @@ public class Album extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.price);
     }
 
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(name);
-        dest.writeString(genre);
-        dest.writeString(releaseDate);
-        dest.writeInt(stock);
-        dest.writeDouble(price);
-    }
 
 }
