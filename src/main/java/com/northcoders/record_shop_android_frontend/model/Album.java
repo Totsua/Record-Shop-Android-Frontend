@@ -17,8 +17,8 @@ public class Album extends BaseObservable implements Parcelable {
     Artist artist;
     String genre;
     String releaseDate;
-    Integer stock;
-    Double price;
+    int stock;
+    double price;
 
     public Album() {}
 
