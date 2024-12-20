@@ -73,7 +73,7 @@ public class UpdateAlbumClickHandler {
     }
 
 
-    public void onDeleteButtonClick(long id){
+    public void onDeleteButtonClick(View view){
         viewModel.deleteAlbum(album.getId());
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
