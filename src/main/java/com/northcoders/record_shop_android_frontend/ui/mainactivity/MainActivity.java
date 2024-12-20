@@ -2,6 +2,7 @@ package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -71,8 +72,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(this, UpdateAlbumActivity.class);
+        Album chosenAlbum = albums.get(position);
+        // Check log to see if album correctly appears
+        Log.i("Main Activity Choose Album",chosenAlbum.toString());
 
-        intent.putExtra(ALBUM_KEY,albums.get(position));
+        // pass the chosen album to the next activity
+        intent.putExtra(ALBUM_KEY,chosenAlbum);
 
         startActivity(intent);
     }
