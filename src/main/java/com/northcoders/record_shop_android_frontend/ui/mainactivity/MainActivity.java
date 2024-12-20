@@ -3,7 +3,9 @@ package com.northcoders.record_shop_android_frontend.ui.mainactivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     private RecyclerView recycler;
     private ArrayList<Album> albums;
+    private ArrayList<Album> filteredAlbumsList;
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel viewModel;
     private ActivityMainBinding binding;
@@ -45,6 +48,38 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         getAllAlbums();
 
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterList(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
+
+    }
+
+    private void filterList(String text){
+        filteredAlbumsList = new ArrayList<>();
+
+        for(Album album : albums){
+            if(album.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredAlbumsList.add(album);
+            }
+        }
+        if(filteredAlbumsList.isEmpty()){
+            Toast.makeText(this, "No Albums Found", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            albumAdapter.setFilterList(filteredAlbumsList);
+        }
     }
 
     private void getAllAlbums(){
