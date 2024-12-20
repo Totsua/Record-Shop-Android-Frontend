@@ -49,7 +49,8 @@ public class UpdateAlbumClickHandler {
         }
         if(!album.getArtist().getName().isBlank()){
             Artist artist = new Artist();
-            artist.setName(updatedAlbum.getName());
+            artist.setId(album.getArtist().getId());
+            artist.setName(album.getArtist().getName());
             updatedAlbum.setArtist(artist);
         }
         if(!album.getGenre().isBlank()){
