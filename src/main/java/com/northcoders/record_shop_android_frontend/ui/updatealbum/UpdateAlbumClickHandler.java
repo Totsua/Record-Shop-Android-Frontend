@@ -44,6 +44,15 @@ public class UpdateAlbumClickHandler {
     public void onUpdateAlbumButtonClick(View view){
         Album updatedAlbum = new Album();
         updatedAlbum.setId(album.getId());
+
+
+
+        // Checks only see if a field is empty,
+        // todo:
+        //  check to see if the information is the same as it previously was
+        //  if it is then don't include it in the response
+
+
         if(!album.getName().isBlank()){
             updatedAlbum.setName(album.getName());
         }
@@ -59,6 +68,8 @@ public class UpdateAlbumClickHandler {
         if(!album.getReleaseDate().isBlank()){
             updatedAlbum.setReleaseDate(album.getReleaseDate());
         }
+        // price and stock should be able to be 0
+        // todo: change the price/stock input
         if(album.getPrice() > 0){
             updatedAlbum.setPrice(album.getPrice());
         }

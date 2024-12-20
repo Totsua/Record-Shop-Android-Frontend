@@ -41,6 +41,10 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         album = new Album();
         album.setArtist(thisArtist);
+
+        // todo: get the inputs to be specific eg: releaseDate only takes in dates (calender?),
+        //  genre only gives certain inputs (drop down menu?),
+        //  price (to 2 decimal places)
         binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_add_new_album);
 
