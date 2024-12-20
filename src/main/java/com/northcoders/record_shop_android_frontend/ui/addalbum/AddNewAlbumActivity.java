@@ -35,9 +35,9 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         // Get the artist name from the input
         // and create an artist with that name
-        EditText editTextAlbumName = findViewById(R.id.artistName);
+        EditText editTextArtistName = findViewById(R.id.artistName);
         Artist thisArtist = new Artist();
-        thisArtist.setName(editTextAlbumName.getText().toString());
+        thisArtist.setName(editTextArtistName.getText().toString());
 
         album = new Album();
         album.setArtist(thisArtist);
