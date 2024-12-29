@@ -1,8 +1,10 @@
 package com.northcoders.record_shop_android_frontend.ui.updatealbum;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
+import androidx.appcompat.app.AlertDialog;
 
 import com.northcoders.record_shop_android_frontend.model.Album;
 import com.northcoders.record_shop_android_frontend.model.Artist;
@@ -85,10 +87,34 @@ public class UpdateAlbumClickHandler {
     }
 
 
-    public void onDeleteButtonClick(View view){
-        viewModel.deleteAlbum(album.getId());
-        Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
+    public void onDeleteButtonClick(View view) {
+        // Create an alert box that pops up when the button is pressed
+        AlertDialog.Builder quit = new AlertDialog.Builder(this.context)
+                .setTitle("Delete Album")
+                .setMessage("Are you sure you want to delete \"" + album.getName() + "\"?")
+
+                // Set what happens when "ok" is selected (delete the album)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        viewModel.deleteAlbum(album.getId());
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+
+                    }
+                })
+                // Set what happens when "cancel" is pressed
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close dialog
+                        dialog.cancel();
+                    }
+                });
+        // Show the alert box
+        quit.show();
+
     }
 
 
