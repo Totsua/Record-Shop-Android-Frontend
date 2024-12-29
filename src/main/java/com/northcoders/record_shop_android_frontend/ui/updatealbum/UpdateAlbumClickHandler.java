@@ -26,16 +26,16 @@ public class UpdateAlbumClickHandler {
     }
 
     Predicate<Album> isAlbumPropertiesValid = albumToCheck -> {
-        if(albumToCheck.getName() == null ||
+        if (albumToCheck.getName() == null ||
                 albumToCheck.getArtist().getName().isBlank() ||
                 albumToCheck.getArtist() == null ||
                 albumToCheck.getGenre() == null ||
                 albumToCheck.getReleaseDate() == null ||
                 String.valueOf(albumToCheck.getPrice()) == null ||
-                String.valueOf(albumToCheck.getStock())== null)
+                String.valueOf(albumToCheck.getStock()) == null)
 
         // Fields can be null(?) they can be empty but if empty they will become null?
-            // Backend can ignore null values
+        // Backend can ignore null values
 
         {
             return true;
@@ -43,10 +43,9 @@ public class UpdateAlbumClickHandler {
         return false;
     };
 
-    public void onUpdateAlbumButtonClick(View view){
+    public void onUpdateAlbumButtonClick(View view) {
         Album updatedAlbum = new Album();
         updatedAlbum.setId(album.getId());
-
 
 
         // Checks only see if a field is empty,
@@ -55,27 +54,27 @@ public class UpdateAlbumClickHandler {
         //  if it is then don't include it in the response
 
 
-        if(!album.getName().isBlank()){
+        if (!album.getName().isBlank()) {
             updatedAlbum.setName(album.getName());
         }
-        if(!album.getArtist().getName().isBlank()){
+        if (!album.getArtist().getName().isBlank()) {
             Artist artist = new Artist();
             artist.setId(album.getArtist().getId());
             artist.setName(album.getArtist().getName());
             updatedAlbum.setArtist(artist);
         }
-        if(!album.getGenre().isBlank()){
+        if (!album.getGenre().isBlank()) {
             updatedAlbum.setGenre(album.getGenre());
         }
-        if(!album.getReleaseDate().isBlank()){
+        if (!album.getReleaseDate().isBlank()) {
             updatedAlbum.setReleaseDate(album.getReleaseDate());
         }
         // price and stock should be able to be 0
         // todo: change the price/stock input
-        if(album.getPrice() > 0){
+        if (album.getPrice() > 0) {
             updatedAlbum.setPrice(album.getPrice());
         }
-        if(album.getStock() > 0){
+        if (album.getStock() > 0) {
             updatedAlbum.setStock(album.getStock());
         }
 
@@ -118,10 +117,9 @@ public class UpdateAlbumClickHandler {
     }
 
 
-    public void onGoBackButtonClick(View view){
-        Intent intent = new Intent(context,MainActivity.class);
+    public void onGoBackButtonClick(View view) {
+        Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
-
     }
 
 }
