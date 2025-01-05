@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.databinding.AlbumItemLayoutBinding;
 import com.northcoders.record_shop_android_frontend.model.Album;
@@ -43,6 +45,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         Album album = albumList.get(position);
+        ImageView imageView = holder.binding.image;
+        Glide.with(imageView)
+                .load(album.getUrl())
+                        .error(R.drawable.vinyl)
+                                .into(imageView);
         holder.binding.setAlbum(album);
     }
 
