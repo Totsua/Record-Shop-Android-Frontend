@@ -19,10 +19,11 @@ public class Album extends BaseObservable implements Parcelable {
     String releaseDate;
     int stock;
     double price;
+    String url;
 
     public Album() {}
 
-    public Album(long id, String name, Artist artist, String genre, String releaseDate, int stock, double price) {
+    public Album(long id, String name, Artist artist, String genre, String releaseDate, int stock, double price, String url) {
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -30,6 +31,7 @@ public class Album extends BaseObservable implements Parcelable {
         this.releaseDate = releaseDate;
         this.stock = stock;
         this.price = price;
+        this.url = url;
     }
 
     protected Album(Parcel in) {
@@ -40,6 +42,7 @@ public class Album extends BaseObservable implements Parcelable {
         releaseDate = in.readString();
         stock = in.readInt();
         price = in.readDouble();
+        url = in.readString();
     }
 
     @Override
@@ -51,6 +54,7 @@ public class Album extends BaseObservable implements Parcelable {
         dest.writeString(releaseDate);
         dest.writeInt(stock);
         dest.writeDouble(price);
+        dest.writeString(url);
     }
 
     @Override
@@ -154,5 +158,13 @@ public class Album extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.price);
     }
 
+    @Bindable
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+        notifyPropertyChanged(BR.url);
+    }
 }
