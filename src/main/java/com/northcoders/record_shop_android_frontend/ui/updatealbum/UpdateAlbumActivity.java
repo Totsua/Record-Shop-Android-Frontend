@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.bumptech.glide.Glide;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.databinding.ActivityUpdateAlbumBinding;
 import com.northcoders.record_shop_android_frontend.model.Album;
@@ -45,6 +47,9 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         handler = new UpdateAlbumClickHandler(album, viewModel,this);
         binding.setHandler(handler);
         binding.setAlbum(album);
-
+        Glide.with(binding.image)
+                .load(album.getUrl())
+                .error(R.drawable.vinyl)
+                .into(binding.image);
     }
 }
