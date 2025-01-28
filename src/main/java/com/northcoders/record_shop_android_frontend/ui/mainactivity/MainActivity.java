@@ -7,14 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.navigation.NavigationBarView;
 import com.northcoders.record_shop_android_frontend.R;
-import com.northcoders.record_shop_android_frontend.ui.fragments.FirstFragment;
+import com.northcoders.record_shop_android_frontend.ui.fragments.HomeFragment;
 import com.northcoders.record_shop_android_frontend.ui.fragments.SecondFragment;
 import com.northcoders.record_shop_android_frontend.ui.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
 NavigationBarView navigationBarView;
-    FirstFragment firstFragment = new FirstFragment();
+    HomeFragment homeFragment = new HomeFragment();
     SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
 
@@ -36,7 +36,7 @@ NavigationBarView navigationBarView;
         if(item.getItemId() == R.id.home){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frameLayoutFragment, firstFragment)
+                    .replace(R.id.frameLayoutFragment, homeFragment)
                     .commit();
             return true;
         }

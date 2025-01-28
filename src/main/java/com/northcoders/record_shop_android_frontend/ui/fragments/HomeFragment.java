@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;import android.widget.Toast;
 
 import com.northcoders.record_shop_android_frontend.R;
-import com.northcoders.record_shop_android_frontend.databinding.FragmentFirstBinding;
+import com.northcoders.record_shop_android_frontend.databinding.FragmentHomeBinding;
 import com.northcoders.record_shop_android_frontend.model.Album;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.AlbumAdapter;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
@@ -28,18 +28,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FirstFragment extends Fragment implements RecyclerViewInterface {
+public class HomeFragment extends Fragment implements RecyclerViewInterface {
 
     private RecyclerView recycler;
     private ArrayList<Album> albums;
     private ArrayList<Album> filteredAlbumsList;
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel viewModel;
-    private FragmentFirstBinding binding;
+    private FragmentHomeBinding binding;
     private static final String ALBUM_KEY = "album";
 
 
-    public FirstFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -132,7 +132,7 @@ public class FirstFragment extends Fragment implements RecyclerViewInterface {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_first,container,false);
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false);
         View view = binding.getRoot();
 
     // Inflate the layout for this fragment
