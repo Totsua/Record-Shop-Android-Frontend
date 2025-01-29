@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
     }
 
     private void getAllAlbums(){
-        viewModel.getAllAlbums().observe(this, new Observer<List<Album>>() {
+        viewModel.getAllAlbums().observe(getViewLifecycleOwner(), new Observer<List<Album>>() {
             @Override
             public void onChanged(List<Album> albumsFromLiveData) {
                 albums = (ArrayList<Album>) albumsFromLiveData;
