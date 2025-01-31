@@ -51,8 +51,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         ImageView imageView = holder.binding.albumImage;
         Glide.with(imageView)
                 .load(album.getUrl())
-                        .error(R.drawable.vinyl)
-                                .into(imageView);
+                .placeholder(R.drawable.vinyl)
+                .into(imageView);
         holder.binding.setAlbum(album);
     }
 
