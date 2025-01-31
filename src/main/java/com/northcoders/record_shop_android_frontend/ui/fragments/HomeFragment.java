@@ -31,7 +31,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements RecyclerViewInterface {
 
     private RecyclerView recycler;
-    private ArrayList<Album> albums;
+    private ArrayList<Album> albums = new ArrayList<>();
     private ArrayList<Album> filteredAlbumsList;
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel viewModel;
