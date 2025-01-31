@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -106,7 +106,8 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
         // "this" can be passed in for the interface parameter
         albumAdapter = new AlbumAdapter(albums,this.getContext(),this);
         recycler.setAdapter(albumAdapter);
-        recycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        /*recycler.setLayoutManager(new LinearLayoutManager(this.getContext()));*/
+        recycler.setLayoutManager(new GridLayoutManager(this.getContext(),2 ));
         recycler.setHasFixedSize(true);
         albumAdapter.notifyDataSetChanged();
     }
