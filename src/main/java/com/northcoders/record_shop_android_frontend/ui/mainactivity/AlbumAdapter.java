@@ -48,7 +48,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         //set the images for each album
         //todo:
         // Save each image the first time Glide loads it, so it can pull it from memory
-        ImageView imageView = holder.binding.image;
+        ImageView imageView = holder.binding.albumImage;
         Glide.with(imageView)
                 .load(album.getUrl())
                         .error(R.drawable.vinyl)
