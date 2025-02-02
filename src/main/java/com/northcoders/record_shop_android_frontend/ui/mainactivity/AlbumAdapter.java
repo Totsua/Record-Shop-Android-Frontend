@@ -46,8 +46,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         Album album = albumList.get(position);
         //set the images for each album
-        //todo:
-        // Save each image the first time Glide loads it, so it can pull it from memory
+
         ImageView imageView = holder.binding.albumImage;
         Glide.with(imageView)
                 .load(album.getUrl())
