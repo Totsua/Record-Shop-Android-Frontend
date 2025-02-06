@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.navigation.NavigationBarView;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.ui.fragments.HomeFragment;
-import com.northcoders.record_shop_android_frontend.ui.fragments.SecondFragment;
+import com.northcoders.record_shop_android_frontend.ui.fragments.AddAlbumFragment;
 import com.northcoders.record_shop_android_frontend.ui.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
 NavigationBarView navigationBarView;
     HomeFragment homeFragment = new HomeFragment();
-    SecondFragment secondFragment = new SecondFragment();
+    AddAlbumFragment secondFragment = new AddAlbumFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
 
     @Override
