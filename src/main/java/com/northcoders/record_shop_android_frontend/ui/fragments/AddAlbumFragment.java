@@ -38,13 +38,13 @@ public class AddAlbumFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.setHandler(handler);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_addalbum, container,false);
+        binding.setHandler(handler);
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
