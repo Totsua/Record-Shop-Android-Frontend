@@ -4,18 +4,107 @@
         <variable
             name="handler"
             type="com.northcoders.record_shop_android_frontend.ui.addalbum.AddAlbumClickHandlers" />
+        <variable
+            name="album"
+            type="com.northcoders.record_shop_android_frontend.model.Album" />
     </data>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.AddAlbumFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AddAlbumFragment">
+    >
 
-     <!--TODO: Update blank fragment layout-->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context=".ui.addalbum.AddNewAlbumActivity">
+
+
+    <EditText
+        android:id="@+id/albumName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="album name"
+        android:text="@={album.name}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
+    <EditText
+        android:id="@+id/artistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="artist name"
+        android:minHeight="48dp"
+        android:text="@={album.artist.name}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumName" />
+
+    <!--Genre should be a drop-down menu to prevent unnecessary errors-->
+    <EditText
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="genre"
+        android:minHeight="48dp"
+        android:text="@={album.genre}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistName" />
+
+    <EditText
+        android:id="@+id/releaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="release date"
+        android:text="@={album.releaseDate}"
+        android:inputType="date"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre" />
+
+    <EditText
+        android:id="@+id/stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="stock number"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:text="@={`` + album.stock}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="album price"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:text="@={``+ album.price}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stock" />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:onClick="@{handler::onSubmitAlbumButtonClick}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Album"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
 </layout>
