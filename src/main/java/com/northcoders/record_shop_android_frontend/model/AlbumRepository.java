@@ -92,7 +92,7 @@ public class AlbumRepository {
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
                 Toast.makeText(application.getApplicationContext(),
-                        "The album cannot be updated",Toast.LENGTH_SHORT);
+                        "The album cannot be updated",Toast.LENGTH_SHORT).show();
                 Log.e("PATCH failed",t.getMessage());
             }
         });
@@ -106,17 +106,17 @@ public class AlbumRepository {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 201) {
                     Toast.makeText(application.getApplicationContext(),
-                            "The album has been deleted", Toast.LENGTH_SHORT);
+                            "The album has been deleted", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(application.getApplicationContext(),
                             "The album was not able to be deleted",
-                            Toast.LENGTH_SHORT);
+                            Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(application.getApplicationContext(),
-                        "The album couldn't be deleted",Toast.LENGTH_SHORT);
+                        "The album couldn't be deleted",Toast.LENGTH_SHORT).show();
                 Log.e("DELETE failed", t.getMessage());
             }
         });
