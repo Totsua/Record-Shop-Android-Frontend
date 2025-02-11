@@ -48,7 +48,7 @@ public class AddAlbumClickHandlers {
 
 
     public void onSubmitAlbumButtonClick(View view){
-
+        FragmentActivity activity = (FragmentActivity) context;
         EditText artistTextBox = activity.findViewById(R.id.artistName);
         Artist thisArtist = new Artist();
         thisArtist.setName(artistTextBox.getText().toString());
