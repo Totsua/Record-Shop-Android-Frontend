@@ -47,10 +47,18 @@ public class AlbumRepository {
         albumCall.enqueue(new Callback<Album>() {
             @Override
             public void onResponse(Call<Album> call, Response<Album> response) {
-                Toast.makeText(application.getApplicationContext(),
-                        "The album has been posted",
-                        Toast.LENGTH_SHORT)
-                        .show();
+               if(response.code() == 201) {
+                   Toast.makeText(application.getApplicationContext(),
+                                   "The album has been posted",
+                                   Toast.LENGTH_SHORT)
+                           .show();
+               }
+               else{
+                   Toast.makeText(application.getApplicationContext(),
+                                   "The album cannot posted",
+                                   Toast.LENGTH_SHORT)
+                           .show();
+               }
             }
 
             @Override
