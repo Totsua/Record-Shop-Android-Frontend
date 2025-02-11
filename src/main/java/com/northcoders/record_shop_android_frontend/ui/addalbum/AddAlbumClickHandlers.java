@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.model.Album;
 import com.northcoders.record_shop_android_frontend.model.Artist;
@@ -21,6 +22,7 @@ public class AddAlbumClickHandlers {
     Context context;
     FragmentActivity activity;
     MainActivityViewModel viewModel;
+    NavigationBarView navigationBarView;
 
     public AddAlbumClickHandlers(Album album, Context context, MainActivityViewModel viewModel,FragmentActivity activity) {
         this.album = album;
@@ -59,12 +61,15 @@ public class AddAlbumClickHandlers {
                     .show();
         }else{
             viewModel.createAlbum(album);
+
+            navigationBarView = activity.findViewById(R.id.NavBar);
+            navigationBarView.setSelectedItemId(R.id.home);
+
             HomeFragment homeFragment = new HomeFragment();
             activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.frameLayoutFragment, homeFragment)
                     .commit();
-
         }
     }
 
