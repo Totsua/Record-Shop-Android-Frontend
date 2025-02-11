@@ -20,15 +20,13 @@ public class AddAlbumClickHandlers {
 
     Album album;
     Context context;
-    FragmentActivity activity;
     MainActivityViewModel viewModel;
     NavigationBarView navigationBarView;
 
-    public AddAlbumClickHandlers(Album album, Context context, MainActivityViewModel viewModel,FragmentActivity activity) {
+    public AddAlbumClickHandlers(Album album, Context context, MainActivityViewModel viewModel) {
         this.album = album;
         this.context = context;
         this.viewModel = viewModel;
-        this.activity = activity;
     }
 
     // Check if the inputs are empty

@@ -47,7 +47,7 @@ public class AddAlbumFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_addalbum, container,false);
         album = new Album();
-        handler = new AddAlbumClickHandlers(album,this.getContext(),viewModel,this.getActivity());
+        handler = new AddAlbumClickHandlers(album,this.getContext(),viewModel);
         binding.setHandler(handler);
         binding.setAlbum(album);
         // Inflate the layout for this fragment
