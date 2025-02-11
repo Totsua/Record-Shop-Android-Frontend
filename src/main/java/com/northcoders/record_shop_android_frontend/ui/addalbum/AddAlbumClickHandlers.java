@@ -2,12 +2,14 @@ package com.northcoders.record_shop_android_frontend.ui.addalbum;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.model.Album;
+import com.northcoders.record_shop_android_frontend.model.Artist;
 import com.northcoders.record_shop_android_frontend.ui.fragments.HomeFragment;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
 
@@ -44,6 +46,12 @@ public class AddAlbumClickHandlers {
 
 
     public void onSubmitAlbumButtonClick(View view){
+
+        EditText artistTextBox = activity.findViewById(R.id.artistName);
+        Artist thisArtist = new Artist();
+        thisArtist.setName(artistTextBox.getText().toString());
+        album.setArtist(thisArtist);
+
         if(checkAlbumProperties.test(album)){
             // If there's empty fields when the user tries to submit an album,
             // Then the toast error message will appear
