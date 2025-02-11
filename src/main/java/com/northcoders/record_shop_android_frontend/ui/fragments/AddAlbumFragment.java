@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.databinding.FragmentAddalbumBinding;
+import com.northcoders.record_shop_android_frontend.model.Album;
 import com.northcoders.record_shop_android_frontend.ui.addalbum.AddAlbumClickHandlers;
 import com.northcoders.record_shop_android_frontend.ui.mainactivity.MainActivityViewModel;
 
@@ -22,6 +23,7 @@ public class AddAlbumFragment extends Fragment {
     private MainActivityViewModel viewModel;
     private FragmentAddalbumBinding binding;
     private AddAlbumClickHandlers handler;
+    private Album album;
 
     public AddAlbumFragment() {
         // Required empty public constructor
@@ -44,7 +46,10 @@ public class AddAlbumFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_addalbum, container,false);
+        album = new Album();
+        handler = new AddAlbumClickHandlers(album,this.getContext(),viewModel,this.getActivity());
         binding.setHandler(handler);
+        binding.setAlbum(album);
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
