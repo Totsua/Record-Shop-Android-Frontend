@@ -118,8 +118,8 @@ public class UpdateAlbumClickHandler {
 
 
     public void onGoBackButtonClick(View view) {
-        Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
+        UpdateAlbumActivity activity = (UpdateAlbumActivity) context;
+        activity.finish();
     }
 
 }
