@@ -23,14 +23,16 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
 
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"/>
 
 
     <EditText
@@ -42,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
+        android:layout_marginTop="20dp"
         />
 
     <EditText
@@ -73,6 +76,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="release date"
+        android:gravity="center"
         android:text="@={album.releaseDate}"
         android:inputType="date"
         android:minHeight="48dp"
@@ -104,19 +108,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stock" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backButton"
-        android:contentDescription="A back button"
-        android:onClick="@{handler::onGoBackButtonClick}"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="344dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/price"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <Button
         android:id="@+id/update"
@@ -137,11 +128,12 @@
         android:backgroundTint="#BF0202"
         android:onClick="@{handler::onDeleteButtonClick}"
         android:text="Delete Album"
+        app:layout_constraintTop_toTopOf="@+id/update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@id/backButton" />
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
