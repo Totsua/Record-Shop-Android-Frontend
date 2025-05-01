@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
         recycler = binding.homeRecycler;
         // Because this class implements the RecyclerViewInterface ->
         // "this" can be passed in for the interface parameter
-        albumAdapter = new AlbumAdapter(albums,this.getContext(),this);
+        albumAdapter = new AlbumAdapter(albums,this.getContext(),this,viewModel);
         recycler.setAdapter(albumAdapter);
         /*recycler.setLayoutManager(new LinearLayoutManager(this.getContext()));*/
         recycler.setLayoutManager(new GridLayoutManager(this.getContext(),2 ));

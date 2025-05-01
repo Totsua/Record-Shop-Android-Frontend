@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -22,11 +23,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     List<Album> albumList;
     Context context;
     RecyclerViewInterface recyclerInterface;
+    MainActivityViewModel viewModel;
 
-    public AlbumAdapter(List<Album> albumList, Context context, RecyclerViewInterface recyclerInterface) {
+    public AlbumAdapter(List<Album> albumList, Context context, RecyclerViewInterface recyclerInterface, MainActivityViewModel viewModel) {
         this.albumList = albumList;
         this.context = context;
         this.recyclerInterface = recyclerInterface;
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -39,7 +42,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 false);
 
 
-        return new AlbumViewHolder(binding,recyclerInterface);
+        return new AlbumViewHolder(binding,recyclerInterface,viewModel);
     }
 
     @Override
@@ -53,6 +56,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 .placeholder(R.drawable.vinyl)
                 .fitCenter()
                 .into(imageView);
+
+        holder.binding.favouriteIcon
+                .setImageResource(album.getFavourite() ?
+                        R.drawable.ic_favourite_enabled : R.drawable.ic_favourites_foreground);
+
         holder.binding.setAlbum(album);
     }
 
@@ -72,9 +80,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     }
 
     public static class AlbumViewHolder extends RecyclerView.ViewHolder{
-        private AlbumItemLayoutBinding binding;
+        private final AlbumItemLayoutBinding binding;
 
-        public AlbumViewHolder(AlbumItemLayoutBinding binding, RecyclerViewInterface recyclerInterface){
+        public AlbumViewHolder(AlbumItemLayoutBinding binding, RecyclerViewInterface recyclerInterface,MainActivityViewModel viewModel){
             super(binding.getRoot());
             this.binding = binding;
 
@@ -93,6 +101,20 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 }
             });
 
+            binding.favouriteIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    binding.getAlbum().setFavourite(!binding.getAlbum().getFavourite());
+                    Album album = new Album();
+                    album.setId(binding.getAlbum().getId());
+                    album.setFavourite(binding.getAlbum().getFavourite());
+
+                    viewModel.updateAlbum(album);
+                    Toast.makeText(itemView.getContext(), "Updating...", Toast.LENGTH_SHORT).show();
+                    binding.favouriteIcon.setImageResource(binding.getAlbum().getFavourite() ? R.drawable.ic_favourite_enabled : R.drawable.ic_favourites_foreground);
+                }
+            });
         }
     }
 }

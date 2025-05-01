@@ -20,10 +20,11 @@ public class Album extends BaseObservable implements Parcelable {
     int stock;
     double price;
     String url;
+    Boolean isFavourite;
 
     public Album() {}
 
-    public Album(long id, String name, Artist artist, String genre, String releaseDate, int stock, double price, String url) {
+    public Album(long id, String name, Artist artist, String genre, String releaseDate, int stock, double price, String url, Boolean isFavourite) {
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -32,6 +33,7 @@ public class Album extends BaseObservable implements Parcelable {
         this.stock = stock;
         this.price = price;
         this.url = url;
+        this.isFavourite = isFavourite;
     }
 
     protected Album(Parcel in) {
@@ -43,6 +45,7 @@ public class Album extends BaseObservable implements Parcelable {
         stock = in.readInt();
         price = in.readDouble();
         url = in.readString();
+        isFavourite = in.readBoolean();
     }
 
     @Override
@@ -55,6 +58,7 @@ public class Album extends BaseObservable implements Parcelable {
         dest.writeInt(stock);
         dest.writeDouble(price);
         dest.writeString(url);
+        dest.writeBoolean(isFavourite);
     }
 
     @Override
@@ -84,6 +88,7 @@ public class Album extends BaseObservable implements Parcelable {
                 ", releaseDate='" + releaseDate + '\'' +
                 ", stock=" + stock +
                 ", price=" + price +
+                ", isFavourite=" + isFavourite +
                 '}';
     }
 
@@ -166,5 +171,15 @@ public class Album extends BaseObservable implements Parcelable {
     public void setUrl(String url) {
         this.url = url;
         notifyPropertyChanged(BR.url);
+    }
+
+    @Bindable
+    public Boolean getFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(Boolean favourite) {
+        this.isFavourite = favourite;
+        notifyPropertyChanged(BR.favourite);
     }
 }
