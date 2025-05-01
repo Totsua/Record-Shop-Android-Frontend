@@ -1,5 +1,7 @@
 package com.northcoders.record_shop_android_frontend.model;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
@@ -84,8 +86,13 @@ public class AlbumRepository {
                                     Toast.LENGTH_SHORT)
                         .show();
                 } else {
-                    Toast.makeText(application.getApplicationContext(),
-                            response.body().toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(application.getApplicationContext(), "The album couldn't be updated",LENGTH_LONG).show();
+                    Log.d("AlbumRepository","Code: " + response.code() );
+                    if(response.body() != null){
+                        Log.d("AlbumRepository","Body: " + response.body());
+                        Toast.makeText(application.getApplicationContext(),
+                                response.body().toString(), LENGTH_LONG).show();
+                    }
                 }
             }
 
