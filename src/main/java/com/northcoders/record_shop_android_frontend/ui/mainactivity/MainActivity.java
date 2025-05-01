@@ -9,14 +9,14 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.northcoders.record_shop_android_frontend.R;
 import com.northcoders.record_shop_android_frontend.ui.fragments.HomeFragment;
 import com.northcoders.record_shop_android_frontend.ui.fragments.AddAlbumFragment;
-import com.northcoders.record_shop_android_frontend.ui.fragments.ThirdFragment;
+import com.northcoders.record_shop_android_frontend.ui.fragments.FavouriteFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
 NavigationBarView navigationBarView;
     HomeFragment homeFragment = new HomeFragment();
     AddAlbumFragment secondFragment = new AddAlbumFragment();
-    ThirdFragment thirdFragment = new ThirdFragment();
+    FavouriteFragment favouriteFragment = new FavouriteFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ NavigationBarView navigationBarView;
         if(item.getItemId() == R.id.favourite){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frameLayoutFragment, thirdFragment)
+                    .replace(R.id.frameLayoutFragment, favouriteFragment)
                     .commit();
             return true;
         }
